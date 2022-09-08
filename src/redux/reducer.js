@@ -6,8 +6,8 @@ const initState = {
     },
     todoList: [
         { id: 1, name: "Learn Yoga", completed: false, priority: "High" },
-        { id: 2, name: "Learn ReactJS", completed: false, priority: "Medium" },
-        { id: 3, name: "Learn English", completed: false, priority: "Low" }
+        { id: 2, name: "Learn ReactJS", completed: true, priority: "Medium" },
+        { id: 3, name: "Learn English", completed: true, priority: "Low" }
     ]
 }
 
@@ -22,12 +22,38 @@ const rootReducer = (state = initState, action) => {
                     action.payload
                 ]
             }
+        case 'todoList/changeTodoStatus':
+            return {
+                ...state,
+                todoList: [
+                    ...state.todoList,
+                    // state.map(todo => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo)
+                ]
+            }
+            // state.map(todo => todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo)
+
         case 'search/searchFilter':
             return {
                 ...state,
                 filter: {
                     ...state.filter,
                     search: action.payload
+                }
+            }
+        case 'search/statusFilter':
+            return {
+                ...state,
+                filter: {
+                    ...state.filter,
+                    status: action.payload
+                }
+            }
+        case 'search/priorityFilter':
+            return {
+                ...state,
+                filter: {
+                    ...state.filter,
+                    priority: action.payload
                 }
             }
         default: return state;

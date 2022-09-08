@@ -12,8 +12,8 @@ export default function TodoList() {
   const [priority, setPriority] = useState("Medium")
 
   const todoList = useSelector(todoListSelector)
-  const search = useSelector(searchSelector)
-  console.log(todoList, search)
+  // const search = useSelector(searchSelector)
+  console.log(todoList)
 
   const handleAddTodo = () => {
     //dispatch()
@@ -40,7 +40,7 @@ export default function TodoList() {
     <Row style={{ height: 'calc(100% - 40px)' }}>
       <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
         {todoList.map((todo) =>(
-          <Todo key={todo.id} name={todo.name} prioriry={todo.priority} />
+          <Todo key={todo.id} id={todo.id} name={todo.name} prioriry={todo.priority} completed={todo.completed}/>
         ))}
         {/* <Todo name='Learn React' prioriry='High' />
         <Todo name='Learn Redux' prioriry='Medium' />
