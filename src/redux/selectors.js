@@ -12,9 +12,9 @@ export const todoListSelector = (state) => {
             && (state.filter.status === 'Completed'
                 ? todo.completed
                 : !todo.completed)
-            && (prioritySelector
-                ? state.filter.priority.includes(todo.priority)
-                : true)
+            // && (prioritySelector
+            //     ? state.filter.priority.includes(todo.priority)
+            //     : true)
     })
     return todosFilter;
 }
